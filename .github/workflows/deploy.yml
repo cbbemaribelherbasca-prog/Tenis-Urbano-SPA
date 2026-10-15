@@ -1,4 +1,4 @@
-name: Publicar Tenis Urbano en Pages
+name: Publicar sitio en GitHub Pages
 
 on:
   push:
@@ -17,33 +17,35 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Descargar el repositorio
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - name: Preparar Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: 22
           cache: npm
 
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Compilar para la dirección del repositorio
-        run: npm run build -- --base=/Tenis-Urbano/
+      - name: Compilar React
+        run: npm run build
 
-      - name: Configurar Pages
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
 
-      - name: Preparar el sitio compilado
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+      - name: Preparar sitio
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
-      - name: Publicar el sitio
+      - name: Publicar
         id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
+        uses: actions/deploy-pages@v4
