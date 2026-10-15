@@ -1,0 +1,126 @@
+const productImages = import.meta.glob(['../../assets/*.png', '!../../assets/LOGO*'], {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+export const products = [
+  {
+    id: 1,
+    name: 'Órbita Cobalto',
+    audience: 'Niños',
+    style: 'Running',
+    color: 'Blanco / Cobalto',
+    price: 429,
+    oldPrice: 529,
+    image: 'assets/zapatillas neon.png',
+    badge: '-19%',
+    description:
+      'Tenis ligero con amortiguación suave y malla respirable para acompañar tus recorridos diarios.',
+  },
+  {
+    id: 2,
+    name: 'Pulso Negro',
+    audience: 'Hombre',
+    style: 'Running',
+    color: 'Negro / Crema',
+    price: 389,
+    oldPrice: 469,
+    image: 'assets/tenis-negro.png',
+    badge: '-17%',
+    description:
+      'Silueta robusta con suela de gran tracción y soporte estable para moverte con seguridad.',
+  },
+  {
+    id: 3,
+    name: 'Arena Club',
+    audience: 'Mujer',
+    style: 'Casual',
+    color: 'Arena / Goma',
+    price: 349,
+    oldPrice: null,
+    image: 'assets/botin-cafe.png',
+    badge: 'Nuevo',
+    description:
+      'Perfil casual, tonos neutros y plantilla acolchada para combinar comodidad y estilo todos los días.',
+  },
+  {
+    id: 4,
+    name: 'Vector Azul',
+    audience: 'Hombre',
+    style: 'Urbano',
+    color: 'Blanco / Azul',
+    price: 419,
+    oldPrice: null,
+    image: 'assets/tenis-cobalto.png',
+    badge: 'Nuevo',
+    description:
+      'Una propuesta urbana limpia con detalles azules y una suela flexible pensada para la ciudad.',
+  },
+  {
+    id: 5,
+    name: 'Noche Uno',
+    audience: 'Niños',
+    style: 'Urbano',
+    color: 'Negro / Marfil',
+    price: 359,
+    oldPrice: 449,
+    image: 'assets/zapatillas princesa.png',
+    badge: '-20%',
+    description:
+      'Volumen contemporáneo y contraste sutil para llevar desde la mañana hasta la noche.',
+  },
+  {
+    id: 6,
+    name: 'Duna 02',
+    audience: 'Hombre',
+    style: 'Casual',
+    color: 'Beige / Goma',
+    price: 329,
+    oldPrice: null,
+    image: 'assets/tenis-arena.png',
+    badge: 'Esencial',
+    description:
+      'Tenis versátil con acabado suave, suela de goma y una estética minimalista fácil de combinar.',
+  },
+  {
+    id: 7,
+    name: 'Cima Pro',
+    audience: 'Mujer',
+    style: 'Running',
+    color: 'Blanco / Cobalto',
+    price: 459,
+    oldPrice: 549,
+    image: 'assets/botas cafe.png',
+    badge: '-16%',
+    description:
+      'Respuesta ágil, ajuste cómodo y una base estable para entrenamientos y días de mucho movimiento.',
+  },
+  {
+    id: 8,
+    name: 'Distrito',
+    audience: 'Mujer',
+    style: 'Urbano',
+    color: 'Negro / Crema',
+    price: 379,
+    oldPrice: null,
+    image: 'assets/tenis beige.png',
+    badge: 'Nuevo',
+    description:
+      'Diseño urbano de líneas marcadas con comodidad interior para recorrer la ciudad sin pausa.',
+  },
+  {
+    id: 9,
+    name: 'Lino Natural',
+    audience: 'Niños',
+    style: 'Casual',
+    color: 'Arena / Miel',
+    price: 319,
+    oldPrice: 379,
+    image: 'assets/zapatillas drew.png',
+    badge: '-16%',
+    description:
+      'Texturas naturales y tonos cálidos en una silueta relajada para tus planes de fin de semana.',
+  },
+].map((product) => ({ ...product, image: productImages['../../' + product.image] }));
+
+export const money = (value) => 'Bs ' + value.toLocaleString('es-BO');
