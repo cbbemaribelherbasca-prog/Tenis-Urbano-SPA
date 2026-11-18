@@ -109,3 +109,7 @@ La compilación de producción y la comprobación de formato finalizaron correct
 **Ejemplo verificable:** con Pulso Negro, talla 36 y una unidad, el subtotal es Bs 389. Envío nacional da Bs 414; retiro da Bs 389. Una fecha pasada bloquea el envío y enfoca el resumen de errores. Con una fecha válida y los campos completos, aparece Compra exitosa. Al volver al catálogo, el contador queda en cero y el carrito sigue vacío después de recargar.
 
 Las capturas corresponden a datos de demostración sin información personal. El repositorio y los archivos de entrega no requieren claves ni tokens de usuario.
+
+## Entidad principal, CRUD y seguridad
+
+La entidad principal es Producto. [Campos, matriz CRUD, regla de seguridad y duda técnica](docs/ENTIDAD-CRUD-SEGURIDAD.md) documenta el modelo actual y una política propuesta para una futura API. La SPA no implementa autenticación ni un rol administrativo; el documento distingue ese alcance y contiene una respuesta para el debate que detecta una regla de acceso incompleta.
